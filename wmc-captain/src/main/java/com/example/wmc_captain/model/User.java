@@ -1,13 +1,11 @@
 package com.example.wmc_captain.model;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Table(name = "users")  // ✅ Use a safe table name
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -20,4 +18,5 @@ public class User {
     private String username;
     private String password;
     private String role; // ADMIN or USER
+
 }
