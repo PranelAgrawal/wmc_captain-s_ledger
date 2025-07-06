@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div id="header-container"></div>
 <div class="container">
-    <h1>Add New User</h1>
+    <h1>🛡️ Add New Hero</h1>
     <input type="text" id="newUsername" placeholder="Username">
     <input type="password" id="newPassword" placeholder="Password">
     <select id="newRole">
@@ -17,6 +18,13 @@
     <button onclick="addUser()">Add User</button>
     <p id="addMsg"></p>
 </div>
+<script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header-container").innerHTML = data;
+      });
+</script>
 <script src="js/add-user.js"></script>
 </body>
 </html>

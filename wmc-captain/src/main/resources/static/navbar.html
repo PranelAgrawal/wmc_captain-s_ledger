@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Captain Ledger - Navbar</title>
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <h2>Captain Ledger</h2>
+        </div>
+        <div class="nav-right">
+            <div class="profile-btn" onclick="toggleProfile()">
+                <img src="default-avatar.png" id="avatar" class="avatar" />
+            </div>
+        </div>
+    </nav>
+
+    <div class="profile-card" id="profileCard" style="display: none;">
+        <h3>My Profile</h3>
+        <form id="profileForm">
+            <input type="text" id="fullName" placeholder="Full Name" />
+            <input type="text" id="email" placeholder="Email" />
+            <input type="text" id="phone" placeholder="Phone Number" />
+            <input type="text" id="role" disabled />
+            <input type="text" id="username" disabled />
+            <input type="number" id="missions" disabled />
+            <input type="text" id="avatarUrl" placeholder="Profile Picture URL" />
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
+
+    <script src="js/profile.js"></script>
+</body>
+</html>
