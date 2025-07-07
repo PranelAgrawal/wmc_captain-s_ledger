@@ -1,6 +1,6 @@
 package com.example.wmc_captain.controller;
 import com.example.wmc_captain.model.User;
-import com.example.wmc_captain.repository.UseRepository;
+import com.example.wmc_captain.repository.UserRepository;
 import com.example.wmc_captain.service.UseService;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpSession;
@@ -17,7 +17,7 @@ public class UserController {
 
     @Autowired
     private UseService userService;
-    private UseRepository userRepository;
+    private UserRepository userRepository;
 
     @PostConstruct
     public void initAdmin() {

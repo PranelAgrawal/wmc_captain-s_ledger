@@ -1,17 +1,3 @@
-window.onload = function () {
-    fetch("http://localhost:8080/api/check-session", {
-        credentials: "include"
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.status !== "logged_in" || data.role !== "ADMIN") {
-            alert("You are not authorized. Redirecting to login.");
-            window.location.href = "login.html";
-        }
-    });
-};
-
-
 function addUser() {
     const username = document.getElementById('newUsername').value.trim();
     const password = document.getElementById('newPassword').value.trim();
@@ -33,7 +19,6 @@ function addUser() {
         return;
     }
 
-    // Weak password detection (basic check)
     const strongPasswordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
     if (!strongPasswordPattern.test(password)) {
         msgDiv.innerText = "Password is weak. It must contain uppercase, lowercase, digit, and special character.";
@@ -62,5 +47,31 @@ function addUser() {
     .catch(err => {
         console.error("Add user error:", err);
         msgDiv.innerText = "Failed to add user.";
+    });
+}
+
+function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    fetch("http://localhost:8080/api/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify({ username, password })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === "success") {
+            if (data.role === "ADMIN") {
+                window.location.href = "add-user.html";
+            } else {
+                window.location.href = "welcome.html";
+            }
+        } else {
+            document.getElementById("message").innerText = data.message;
+        }
     });
 }
