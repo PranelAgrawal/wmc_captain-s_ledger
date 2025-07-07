@@ -2,30 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Captain's Dashboard</title>
-  <link rel="stylesheet" href="/css/admin-style.css">
+  <title>Captain Dashboard</title>
+  <link rel="stylesheet" href="css/admin-style.css">
 </head>
 <body>
-<div class="sidebar">
-  <h2>🛡️ Captain's Ledger</h2>
-  <ul>
-    <li><a href="/add-avenger.html">Add Avenger</a></li>
-    <li><a href="#">Assign Mission</a></li>
-    <li><a href="#">View Feedback</a></li>
-    <li><a href="#">Attendance Panel</a></li>
-    <li><a href="/html/login.html" onclick="logout()">Logout</a></li>
-  </ul>
-</div>
+
+<!-- Injected Navbar -->
+<div id="navbar-placeholder"></div>
 
 <div class="main-content">
-  <h1>Welcome, Captain!</h1>
-  <p>Select an option from the left to begin.</p>
+  <h1>Welcome to the Admin Dashboard</h1>
+  <!-- More dashboard content here -->
 </div>
 
-<script>
-  function logout() {
-      sessionStorage.clear();
-  }
-</script>
+<script src="js/navbar-loader.js"></script>
 </body>
 </html>

@@ -6,20 +6,31 @@
   <link rel="stylesheet" href="css/admin-style.css">
 </head>
 <body>
-<div class="admin-header">
-  🛡️ Captain's Ledger — Admin Control Panel
+
+<!-- 🧭 Navbar will be loaded here -->
+<div id="navbar-placeholder"></div>
+
+<!-- 🧱 Main Content -->
+<div class="main-content">
+  <div class="page-container">
+    <h1>Add New Avenger</h1>
+
+    <form id="addAvengerForm" class="admin-form">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter password" required>
+
+      <button type="submit" id="submitBtn">Add Avenger</button>
+    </form>
+
+    <div id="resultBox" class="admin-msg"></div>
+  </div>
 </div>
 
-<div class="admin-box">
-  <h2>Add New Avenger</h2>
-  <form id="addAvengerForm">
-    <input type="text" id="username" placeholder="Username" required>
-    <input type="password" id="password" placeholder="Password" required>
-    <button type="submit">Add Avenger</button>
-  </form>
-  <p id="result" class="admin-msg"></p>
-</div>
-
+<!-- ✅ Scripts -->
+<script src="js/navbar-loader.js"></script>
 <script src="js/admin_add_avenger.js"></script>
 </body>
 </html>

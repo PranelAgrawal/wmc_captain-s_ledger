@@ -1,42 +1,64 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #121212;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-image: url('/images/image.jpeg'); /* Corrected path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    color: white;
 }
 
+/* Optional overlay for readability */
+.overlay {
+    background-color: rgba(255, 255, 255, 0.8); /* light blur overlay */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Login box */
 .login-box {
-    background: #1f1f1f;
-    padding: 30px;
-    border-radius: 8px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0px 0px 10px #03e9f4;
-}
-
-input {
-    display: block;
     width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
+    max-width: 400px;
+    text-align: center;
 }
 
-button {
-    padding: 10px 20px;
-    background: #03e9f4;
+/* Form inputs */
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Button */
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2563eb;
+    color: white;
     border: none;
-    color: black;
+    border-radius: 6px;
     font-weight: bold;
+    font-size: 16px;
     cursor: pointer;
-    border-radius: 4px;
+    transition: background 0.3s ease;
 }
 
+.login-box button:hover {
+    background-color: #1e40af;
+}
+
+/* Error message */
 .error {
     color: red;
-    margin-top: 10px;
+    margin-top: 12px;
+    font-size: 14px;
 }
