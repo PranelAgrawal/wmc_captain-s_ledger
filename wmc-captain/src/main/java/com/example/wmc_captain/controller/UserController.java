@@ -54,6 +54,12 @@ public class UserController {
         return Map.of("status", "logged_out");
     }
 
+    @GetMapping("/logout")
+    public String logoutPage(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login.html";
+    }
+
 
     // POST /api/login
     @PostMapping("/login")
