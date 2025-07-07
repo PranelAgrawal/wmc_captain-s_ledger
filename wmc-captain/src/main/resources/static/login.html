@@ -2,77 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login - Captain Ledger</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Captain's Ledger Login</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div id="header-container">
-    <h2>🛡️ Captain Login</h2>
+<div class="login-box">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <p id="error" class="error"></p>
 </div>
-<div class="container">
-    <input type="text" id="username" placeholder="Username" required>
-    <input type="password" id="password" placeholder="Password" required>
-    <button onclick="login()">Login</button>
-    <p id="message" style="color: red;"></p>
-</div>
 
-<script>
-    async function login() {
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-        const message = document.getElementById("message");
-
-        if (!username || !password) {
-            message.textContent = "Please enter both username and password.";
-            return;
-        }
-
-        const response = await fetch("http://localhost:8080/api/login", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ username, password })
-        });
-
-        const data = await response.json();
-
-        if (data.status === "success") {
-            window.location.href = "/welcome";
-        } else {
-            message.textContent = data.message || "Login failed.";
-        }
-    }
-</script>
+<script src="js/login.js"></script>
 </body>
 </html>
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Login - Captain Ledger</title>-->
-<!--    <link rel="stylesheet" href="css/style.css">-->
-<!--</head>-->
-<!--<body>-->
-<!--<div id="header-container"></div>-->
-<!--<div class="container">-->
-<!--    <h1>🛡️ Captain Login</h1>-->
-<!--    <input type="text" id="username" placeholder="Username">-->
-<!--    <input type="password" id="password" placeholder="Password">-->
-<!--    <button onclick="login()">Login</button>-->
-<!--    <p id="message"></p>-->
-<!--</div>-->
-<!--<script src="js/login.js"></script>-->
-<!--<script>-->
-<!--    fetch("header.html")-->
-<!--      .then(res => res.text())-->
-<!--      .then(data => {-->
-<!--        document.getElementById("header-container").innerHTML = data;-->
-<!--      });-->
-<!--</script>-->
-<!--</body>-->
-<!--</html>-->
