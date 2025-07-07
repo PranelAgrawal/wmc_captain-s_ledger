@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Avenger Dashboard</title>
+    <link rel="stylesheet" href="css/admin-style.css" />
+</head>
+<body>
+
+<!-- Navbar (loaded dynamically) -->
+<div id="navbar-placeholder"></div>
+
+<div class="main-content">
+    <div class="page-container">
+        <h1>Your Profile</h1>
+        <form id="profileForm" class="admin-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" />
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Change password" />
+
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description" placeholder="Describe yourself" />
+
+            <label for="avatarUrl">Avatar URL</label>
+            <input type="text" id="avatarUrl" name="avatarUrl" placeholder="Paste avatar image link" />
+
+            <label for="currentMission">Current Mission</label>
+            <input type="text" id="currentMission" name="currentMission" disabled style="background-color: #e5e7eb;" />
+
+            <label for="activeMission">Active Mission</label>
+            <input type="text" id="activeMission" name="activeMission" disabled style="background-color: #e5e7eb;" />
+
+            <button type="submit">Save Changes</button>
+        </form>
+
+        <div id="saveMessage" class="admin-msg"></div>
+    </div>
+</div>
+
+<script src="js/user_navbar_loader.js"></script>
+<script src="js/user_dashboard.js"></script>
+</body>
+</html>

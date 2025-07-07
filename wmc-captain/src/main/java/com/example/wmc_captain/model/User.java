@@ -12,8 +12,10 @@ public class User {
     private String username;
     private String password;
     private String role; // "ADMIN" or "USER"
+    //google form gmail
+    // name
+    // boolean active mission
 
-    // Getters and Setters
 
     public Long getId() {
         return id;
