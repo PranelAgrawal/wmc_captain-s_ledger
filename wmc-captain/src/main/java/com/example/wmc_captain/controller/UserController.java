@@ -75,25 +75,24 @@ public class UserController {
             res.put("username", user.get().getUsername());
             res.put("role", user.get().getRole());
         } else {
+            System.out.println(request.getUsername());
             res.put("status", "fail");
             res.put("message", "Invalid credentials");
         }
 
         return res;
     }
-
-
     // POST /api/users
     @PostMapping("/users")
     public Map<String, String> addUser(@RequestBody User user, HttpSession session) {
         Map<String, String> res = new HashMap<>();
         String role = (String) session.getAttribute("role");
 
-        if ("ADMIN".equals(role)) {
-            if (userService.userExists(user.getUsername())) {
+        if("ADMIN".equals(role)) {
+            if(userService.userExists(user.getUsername())) {
                 res.put("status", "fail");
                 res.put("message", "Username already exists.");
-            } else {
+            }else {
                 userService.addUser(user);
                 res.put("status", "success");
                 res.put("message", "User added.");
@@ -102,9 +101,6 @@ public class UserController {
             res.put("status", "fail");
             res.put("message", "Only admins can add users.");
         }
-
         return res;
     }
-
-
 }
