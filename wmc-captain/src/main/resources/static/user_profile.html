@@ -1,48 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <title>Avenger Dashboard</title>
-    <link rel="stylesheet" href="css/admin-style.css" />
+    <title>Avenger Profile</title>
+    <link rel="stylesheet" href="/css/profile.css">
 </head>
 <body>
+<div th:replace="navbar :: navbar"></div> <!-- Reuse navbar -->
 
-<!-- Navbar (loaded dynamically) -->
-<div id="navbar-placeholder"></div>
-
-<div class="main-content">
-    <div class="page-container">
-        <h1>Your Profile</h1>
-        <form id="profileForm" class="admin-form">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name" />
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" />
-
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Change password" />
-
-            <label for="description">Description</label>
-            <input type="text" id="description" name="description" placeholder="Describe yourself" />
-
-            <label for="avatarUrl">Avatar URL</label>
-            <input type="text" id="avatarUrl" name="avatarUrl" placeholder="Paste avatar image link" />
-
-            <label for="currentMission">Current Mission</label>
-            <input type="text" id="currentMission" name="currentMission" disabled style="background-color: #e5e7eb;" />
-
-            <label for="activeMission">Active Mission</label>
-            <input type="text" id="activeMission" name="activeMission" disabled style="background-color: #e5e7eb;" />
-
-            <button type="submit">Save Changes</button>
-        </form>
-
-        <div id="saveMessage" class="admin-msg"></div>
-    </div>
+<div class="profile-container">
+    <h1>Your Avenger Profile</h1>
+    <form th:action="@{/profile/update}" th:object="${user}" method="post">
+        <div>
+            <label>Full Name:</label>
+            <input type="text" th:field="*{fullName}">
+        </div>
+        <div>
+            <label>Email:</label>
+            <input type="email" th:field="*{email}">
+        </div>
+        <div>
+            <label>Avenger Alias:</label>
+            <input type="text" th:field="*{avengerAlias}">
+        </div>
+        <button type="submit">Save Changes</button>
+    </form>
 </div>
 
-<script src="js/user_navbar_loader.js"></script>
-<script src="js/user_dashboard.js"></script>
+<script src="/js/user_profile.js"></script>
 </body>
 </html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8" />-->
+<!--    <title>Avenger Dashboard</title>-->
+<!--    <link rel="stylesheet" href="css/admin-style.css" />-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash; Navbar (loaded dynamically) &ndash;&gt;-->
+<!--<div id="navbar-placeholder"></div>-->
+
+<!--<div class="main-content">-->
+<!--    <div class="page-container">-->
+<!--        <h1>Your Profile</h1>-->
+<!--        <form id="profileForm" class="admin-form">-->
+<!--            <label for="name">Name</label>-->
+<!--            <input type="text" id="name" name="name" placeholder="Enter your name" />-->
+
+<!--            <label for="email">Email</label>-->
+<!--            <input type="email" id="email" name="email" placeholder="Enter your email" />-->
+
+<!--            <label for="password">Password</label>-->
+<!--            <input type="password" id="password" name="password" placeholder="Change password" />-->
+
+<!--            <label for="description">Description</label>-->
+<!--            <input type="text" id="description" name="description" placeholder="Describe yourself" />-->
+
+<!--            <label for="avatarUrl">Avatar URL</label>-->
+<!--            <input type="text" id="avatarUrl" name="avatarUrl" placeholder="Paste avatar image link" />-->
+
+<!--            <label for="currentMission">Current Mission</label>-->
+<!--            <input type="text" id="currentMission" name="currentMission" disabled style="background-color: #e5e7eb;" />-->
+
+<!--            <label for="activeMission">Active Mission</label>-->
+<!--            <input type="text" id="activeMission" name="activeMission" disabled style="background-color: #e5e7eb;" />-->
+
+<!--            <button type="submit">Save Changes</button>-->
+<!--        </form>-->
+
+<!--        <div id="saveMessage" class="admin-msg"></div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script src="js/user_navbar_loader.js"></script>-->
+<!--<script src="js/user_dashboard.js"></script>-->
+<!--</body>-->
+<!--</html>-->

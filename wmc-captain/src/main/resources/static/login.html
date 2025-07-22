@@ -1,23 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Avenger Profile</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Reuse your existing CSS -->
 </head>
 <body>
 <div class="overlay">
-    <div class="login-box">
-        <h2>🛡️ Captain's Ledger</h2>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Login</button>
+    <div class="profile-box">
+        <!-- Profile Header -->
+        <h2>🛡️ <span th:text="${user.avengerAlias} ?: 'Avenger'"></span>'s Profile</h2>
+
+        <!-- Profile Form -->
+        <form id="profileForm" th:action="@{/profile/update}" th:object="${user}" method="post">
+            <!-- Username (Display Only) -->
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" th:value="${user.username}" readonly>
+            </div>
+
+            <!-- Editable Fields -->
+            <div class="form-group">
+                <label>Full Name:</label>
+                <input type="text" th:field="*{fullName}" placeholder="Tony Stark">
+            </div>
+
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" th:field="*{email}" placeholder="tony@starkindustries.com">
+            </div>
+
+            <div class="form-group">
+                <label>Avenger Alias:</label>
+                <input type="text" th:field="*{avengerAlias}" placeholder="Iron Man">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Save Changes</button>
         </form>
+
+        <!-- Error/Success Messages -->
+        <p id="message" th:if="${param.success}" class="success">Profile updated successfully!</p>
         <p id="error" class="error"></p>
     </div>
 </div>
 
-<script src="/js/login.js"></script>
+<!-- Scripts -->
+<script src="/js/user_profile.js"></script>
 </body>
 </html>

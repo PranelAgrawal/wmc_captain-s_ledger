@@ -14,20 +14,13 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
     .then(res => res.json())
     .then(data => {
         if (data.status === "success") {
-            // Save username and role (optional)
-            sessionStorage.setItem("username", username);
+            sessionStorage.setItem("username", data.username);
             sessionStorage.setItem("role", data.role);
 
-            if (data.role === "ADMIN") {
-                sessionStorage.setItem("username", data.username);
-                sessionStorage.setItem("role", data.role);
-                window.location.href = "admin-dashboard.html";
-            }
-            else {
-                window.location.href = "welcome.html";
-            }
-        } else {
-            document.getElementById("error").innerText = "Invalid username or password.";
+            // Remove .html extensions for Spring routing
+            window.location.href = data.role === "ADMIN"
+                ? "/admin/dashboard"
+                : "/profile";
         }
     })
     .catch(err => {

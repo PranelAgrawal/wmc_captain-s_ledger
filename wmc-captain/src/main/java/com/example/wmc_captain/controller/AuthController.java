@@ -33,4 +33,9 @@ public class AuthController {
 
         return response;
     }
+
+    @GetMapping("/user_dashboard")
+    public String dashboard() {
+        return "user_dashboard"; // Make sure this HTML file exists
+    }
 }
